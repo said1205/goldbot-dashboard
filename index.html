@@ -7,76 +7,116 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#0b1120;color:#edf2ff;font-family:Arial,sans-serif}
-header{padding:24px 18px;background:#14213a;border-bottom:1px solid #34415b}
+header{padding:22px 16px;background:#14213a;border-bottom:1px solid #34415b}
 h1{color:#f5c451;margin:0 0 10px}
-main{max-width:700px;margin:auto;padding:16px}
-.card{background:#14213a;border:1px solid #34415b;border-radius:14px;padding:18px;margin:14px 0}
+main{max-width:760px;margin:auto;padding:14px}
+.card{background:#14213a;border:1px solid #34415b;border-radius:14px;padding:16px;margin:14px 0}
 .label{color:#b7c4dc;font-size:14px}
-.value{font-size:28px;font-weight:bold;margin:12px 0}
-.gold{color:#f5c451}
+.value{font-size:25px;font-weight:bold;margin:10px 0}
 .green{color:#50e3a4}
-p{line-height:1.8;color:#c3cde0}
-button{width:100%;padding:14px;margin-top:9px;border:0;border-radius:9px;background:#f5c451;color:#111827;font-weight:bold;font-size:16px}
+p{color:#c3cde0;line-height:1.8}
+button{width:100%;padding:13px;margin-top:9px;border:0;border-radius:9px;background:#f5c451;color:#111827;font-weight:bold;font-size:16px}
 .secondary{background:#34415b;color:white}
-small{color:#f5c451;line-height:1.8}
+.widget{direction:ltr;width:100%;overflow:hidden;border-radius:8px}
+.chart{height:420px}
+.note{font-size:13px;color:#f5d58b}
 </style>
 </head>
 <body>
 <header>
 <h1>GoldBot XAUUSD</h1>
-<p>لوحة التحكم التعليمية للذهب</p>
-<small>محاكي افتراضي فقط — لا يتصل بحساب التداول</small>
+<p>لوحة متابعة الذهب التعليمية</p>
+<p class="note">عرض معلومات السوق فقط — لا يوجد اتصال بحساب التداول</p>
 </header>
+
 <main>
 <div class="card">
-<div class="label">حالة المحاكي</div>
+<h3>سعر الذهب من TradingView</h3>
+<p>المصدر الخارجي: OANDA:XAUUSD. قد تختلف الأسعار عن Exness.</p>
+<div class="widget">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript"
+      src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+      async>
+    {
+      "symbol": "OANDA:XAUUSD",
+      "width": "100%",
+      "locale": "en",
+      "colorTheme": "dark",
+      "isTransparent": true
+    }
+    </script>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<h3>مخطط الذهب</h3>
+<div class="widget chart">
+  <div class="tradingview-widget-container" style="height:100%;width:100%">
+    <div class="tradingview-widget-container__widget"
+      style="height:100%;width:100%"></div>
+    <script type="text/javascript"
+      src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+      async>
+    {
+      "autosize": true,
+      "symbol": "OANDA:XAUUSD",
+      "interval": "15",
+      "timezone": "Etc/UTC",
+      "theme": "dark",
+      "style": "1",
+      "locale": "en",
+      "allow_symbol_change": true,
+      "calendar": false,
+      "support_host": "https://www.tradingview.com"
+    }
+    </script>
+  </div>
+</div>
+<p class="note">إذا لم يظهر الرمز، فقد تحتاج إلى اختيار مصدر آخر للذهب من قائمة رموز المخطط.</p>
+</div>
+
+<div class="card">
+<h3>المحاكي الافتراضي</h3>
+<div class="label">الحالة</div>
 <div class="value green" id="status">متوقف</div>
+<p>هذا القسم للتجربة فقط؛ إشاراته عشوائية وليست تحليلًا للسوق.</p>
 <button onclick="startSim()">تشغيل المحاكي</button>
 <button class="secondary" onclick="stopSim()">إيقاف المحاكي</button>
+<p>عدد الإشارات الافتراضية: <strong id="signals">0</strong></p>
+<p id="log">المحاكي جاهز.</p>
 </div>
+
 <div class="card">
-<div class="label">سعر الذهب الافتراضي XAUUSD</div>
-<div class="value gold" id="price">2650.00</div>
-<p>هذا سعر تجريبي عشوائي، وليس سعر السوق الحقيقي.</p>
-</div>
-<div class="card">
-<div class="label">الرصيد الافتراضي</div>
-<div class="value" id="balance">10,000.00 USD</div>
-<div class="label">عدد الإشارات التعليمية: <span id="signals">0</span></div>
-</div>
-<div class="card">
-<h3>سجل المحاكي</h3>
-<p id="log">المحاكي جاهز للتجربة.</p>
-</div>
-<div class="card">
-<h3>عن المشروع</h3>
-<p>هذه لوحة تعليمية لتجربة واجهة بوت الذهب. لا ترسل أوامر تداول ولا تنفذ صفقات.</p>
-<small>لا تدخل كلمة مرور Exness أو بيانات حسابك هنا.</small>
+<h3>تنبيه مهم</h3>
+<p>المخطط ومعلومات السعر يقدمهما TradingView. المحاكي لا يقرأ بيانات المخطط برمجيًا ولا يرسل أوامر إلى MT5 أو Exness.</p>
+<p class="note">لا تدخل كلمات المرور أو بيانات حساب التداول في هذه الصفحة.</p>
 </div>
 </main>
+
 <script>
 let timer=null;
-let price=2650;
 let count=0;
 function startSim(){
- if(timer)return;
- document.getElementById('status').textContent='يعمل تجريبيًا';
- document.getElementById('log').textContent='بدأ المحاكي دون صفقات حقيقية.';
- timer=setInterval(()=>{
-  price+=(Math.random()-0.5)*3;
-  document.getElementById('price').textContent=price.toFixed(2);
-  if(Math.random()>0.75){
-   count++;
-   document.getElementById('signals').textContent=count;
-   document.getElementById('log').textContent='إشارة افتراضية رقم '+count+' — ليست توصية تداول.';
-  }
- },2000);
+  if(timer)return;
+  document.getElementById("status").textContent="يعمل تجريبيًا";
+  document.getElementById("log").textContent="بدأ المحاكي الافتراضي.";
+  timer=setInterval(()=>{
+    if(Math.random()>0.65){
+      count++;
+      document.getElementById("signals").textContent=count;
+      document.getElementById("log").textContent=
+        "إشارة افتراضية رقم "+count+" — ليست توصية تداول.";
+    }
+  },3000);
 }
 function stopSim(){
- if(timer)clearInterval(timer);
- timer=null;
- document.getElementById('status').textContent='متوقف';
- document.getElementById('log').textContent='تم إيقاف المحاكي.';
+  if(timer)clearInterval(timer);
+  timer=null;
+  document.getElementById("status").textContent="متوقف";
+  document.getElementById("log").textContent="تم إيقاف المحاكي.";
 }
 </script>
 </body>
