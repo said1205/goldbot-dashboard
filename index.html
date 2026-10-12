@@ -3,149 +3,370 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GoldBot XAUUSD</title>
+<meta name="theme-color" content="#0b1120">
+<title>GoldBot XAUUSD | المحاكي التعليمي</title>
 <style>
+:root{--bg:#0b1120;--panel:#14213a;--border:#34415b;--text:#edf2ff;--muted:#b7c4dc;--gold:#f5c451;--green:#50e3a4;--red:#ff7585;--blue:#60a5fa}
 *{box-sizing:border-box}
-body{margin:0;background:#0b1120;color:#edf2ff;font-family:Arial,sans-serif}
-header{padding:22px 16px;background:#14213a;border-bottom:1px solid #34415b}
-h1{color:#f5c451;margin:0 0 10px}
-main{max-width:760px;margin:auto;padding:14px}
-.card{background:#14213a;border:1px solid #34415b;border-radius:14px;padding:16px;margin:14px 0}
-.label{color:#b7c4dc;font-size:14px}
-.value{font-size:25px;font-weight:bold;margin:10px 0}
-.green{color:#50e3a4}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{padding:22px 16px;background:#101b30;border-bottom:1px solid var(--border)}
+header h1{margin:0 0 8px;color:var(--gold);font-size:26px}
+header p{margin:6px 0;color:var(--muted);line-height:1.7}
+main{max-width:950px;margin:auto;padding:14px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:16px;margin:14px 0;overflow:hidden}
+h2{font-size:20px;margin:0 0 14px}
+h3{font-size:17px;margin:0 0 12px}
 p{color:#c3cde0;line-height:1.8}
-button{width:100%;padding:13px;margin-top:9px;border:0;border-radius:9px;background:#f5c451;color:#111827;font-weight:bold;font-size:16px}
-.secondary{background:#34415b;color:white}
-.widget{direction:ltr;width:100%;overflow:hidden;border-radius:8px}
-.chart{height:420px}
-.note{font-size:13px;color:#f5d58b}
+.muted{color:var(--muted);font-size:13px}
+.warning{padding:12px;background:#392c12;border:1px solid #71551e;border-radius:10px;color:#ffe3a0;line-height:1.8;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{background:#0b1120;border:1px solid var(--border);border-radius:11px;padding:13px;min-width:0}
+.stat .label{color:var(--muted);font-size:13px}
+.stat .number{font-size:22px;font-weight:bold;margin-top:9px;overflow-wrap:anywhere}
+.green{color:var(--green)!important}
+.red{color:var(--red)!important}
+.gold{color:var(--gold)!important}
+button{border:0;border-radius:9px;padding:12px 14px;background:var(--gold);color:#111827;font-weight:bold;font-size:15px;cursor:pointer}
+button:disabled{opacity:.45;cursor:not-allowed}
+.btnrow{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+button.secondary{background:#34415b;color:white}
+button.buy{background:#176a50;color:white}
+button.sell{background:#8d3040;color:white}
+input,textarea,select{width:100%;background:#0b1120;border:1px solid #465572;color:white;border-radius:9px;padding:12px;font-size:15px;margin-top:7px}
+label{display:block;color:var(--muted);font-size:14px;margin-top:13px}
+.widget{width:100%;direction:ltr;overflow:hidden;border-radius:9px}
+.chart{height:430px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+th,td{padding:10px 7px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap}
+th{color:var(--gold)}
+.tablewrap{overflow-x:auto}
+.pill{display:inline-block;border-radius:20px;padding:5px 9px;background:#263751;color:var(--muted);font-size:12px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 </style>
 </head>
 <body>
 <header>
-<h1>GoldBot XAUUSD</h1>
-<p>لوحة متابعة الذهب التعليمية</p>
-<p class="note">عرض معلومات السوق فقط — لا يوجد اتصال بحساب التداول</p>
+  <h1>GoldBot XAUUSD</h1>
+  <p>لوحة تحكم ومحاكي تداول الذهب التعليمي</p>
+  <span class="pill">DEMO · محاكاة فقط</span>
 </header>
 
 <main>
-<div class="card">
-<h3>سعر الذهب من TradingView</h3>
-<p>المصدر الخارجي: OANDA:XAUUSD. قد تختلف الأسعار عن Exness.</p>
-<div class="widget">
-  <div class="tradingview-widget-container">
-    <div class="tradingview-widget-container__widget"></div>
-    <script type="text/javascript"
-      src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
-      async>
-    {
-      "symbol": "OANDA:XAUUSD",
-      "width": "100%",
-      "locale": "en",
-      "colorTheme": "dark",
-      "isTransparent": true
-    }
-    </script>
-  </div>
-</div>
-</div>
-
-<div class="card">
-<h3>مخطط الذهب</h3>
-<div class="widget chart">
-  <div class="tradingview-widget-container" style="height:100%;width:100%">
-    <div class="tradingview-widget-container__widget"
-      style="height:100%;width:100%"></div>
-    <script type="text/javascript"
-      src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
-      async>
-    {
-      "autosize": true,
-      "symbol": "OANDA:XAUUSD",
-      "interval": "15",
-      "timezone": "Etc/UTC",
-      "theme": "dark",
-      "style": "1",
-      "locale": "en",
-      "allow_symbol_change": true,
-      "calendar": false,
-      "support_host": "https://www.tradingview.com"
-    }
-    </script>
-  </div>
-</div>
-<p class="note">إذا لم يظهر الرمز، فقد تحتاج إلى اختيار مصدر آخر للذهب من قائمة رموز المخطط.</p>
-</div>
-
-<div class="card" id="ema-panel">
-  <h3>📊 مؤشرات EMA للذهب</h3>
-  <p>الإعداد: EMA 9 وEMA 21 — إطار 15 دقيقة.</p>
-
-  <div style="background:#0b1120;padding:14px;border-radius:10px;margin:12px 0">
-    <p style="color:#60a5fa;margin:4px 0">
-      EMA 9 — المتوسط السريع
-    </p>
-    <p style="color:#fbbf24;margin:4px 0">
-      EMA 21 — المتوسط البطيء
-    </p>
+  <div class="card">
+    <h2>تنبيه قبل البدء</h2>
+    <div class="warning">
+      هذا موقع تعليمي مستقل. لا يتصل بحساب Exness أو MT5 ولا ينفّذ صفقات حقيقية.
+      السعر الظاهر في المخطط مصدر خارجي، أما المحاكي فيستخدم السعر الذي تدخله يدويًا.
+      نتائج المحاكاة لا تمثل أرباحًا مضمونة أو توقعًا لأداء السوق.
+    </div>
   </div>
 
-  <h4>طريقة تفسير التقاطع</h4>
-  <p>📈 تقاطع EMA 9 فوق EMA 21 قد يشير إلى زخم صاعد.</p>
-  <p>📉 تقاطع EMA 9 تحت EMA 21 قد يشير إلى زخم هابط.</p>
-
-  <div style="border:1px solid #34415b;padding:12px;border-radius:9px">
-    <strong>حالة المؤشرات:</strong>
-    <p id="ema-status">بانتظار بيانات فعلية لحساب التقاطع.</p>
+  <div class="card">
+    <h2>سعر الذهب ومعلومات السوق</h2>
+    <p class="muted">المصدر: OANDA:XAUUSD عبر TradingView. قد تختلف الأسعار عن وسيطك.</p>
+    <div class="widget">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+        {
+          "symbol":"OANDA:XAUUSD",
+          "width":"100%",
+          "locale":"en",
+          "colorTheme":"dark",
+          "isTransparent":true
+        }
+        </script>
+      </div>
+    </div>
   </div>
 
-  <p class="note">
-    هذه لوحة تعليمية. لا تُحسب قيم EMA الفعلية من مخطط TradingView المضمّن،
-    ولا تُعد هذه المعلومات توصية تداول.
-  </p>
-</div>
+  <div class="card">
+    <h2>مخطط الذهب — 15 دقيقة</h2>
+    <div class="widget chart">
+      <div class="tradingview-widget-container" style="height:100%;width:100%">
+        <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+        <script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+        {
+          "autosize":true,
+          "symbol":"OANDA:XAUUSD",
+          "interval":"15",
+          "timezone":"Etc/UTC",
+          "theme":"dark",
+          "style":"1",
+          "locale":"en",
+          "allow_symbol_change":true,
+          "calendar":false,
+          "support_host":"https://www.tradingview.com"
+        }
+        </script>
+      </div>
+    </div>
+    <p class="muted">إذا لم يظهر المخطط، تحقق من اتصال الإنترنت أو افتح الموقع في متصفح يدعم عناصر TradingView.</p>
+  </div>
 
-<div class="card">
-<h3>المحاكي الافتراضي</h3>
-<div class="label">الحالة</div>
-<div class="value green" id="status">متوقف</div>
-<p>هذا القسم للتجربة فقط؛ إشاراته عشوائية وليست تحليلًا للسوق.</p>
-<button onclick="startSim()">تشغيل المحاكي</button>
-<button class="secondary" onclick="stopSim()">إيقاف المحاكي</button>
-<p>عدد الإشارات الافتراضية: <strong id="signals">0</strong></p>
-<p id="log">المحاكي جاهز.</p>
-</div>
+  <div class="card">
+    <h2>حساب EMA 9 وEMA 21</h2>
+    <p>ألصق أسعار إغلاق الشموع من الأقدم إلى الأحدث، وافصل بينها بفواصل. استخدم 22 سعرًا أو أكثر للحصول على قراءة تعليمية أفضل.</p>
+    <label for="closes">أسعار إغلاق الشموع</label>
+    <textarea id="closes" rows="4" placeholder="مثال: 2650.2,2651.4,2649.8,2652.1"></textarea>
+    <button id="calcEma" style="width:100%;margin-top:10px">حساب المؤشرات</button>
+    <div class="grid" style="margin-top:14px">
+      <div class="stat">
+        <div class="label">آخر EMA 9</div>
+        <div class="number gold" id="ema9">—</div>
+      </div>
+      <div class="stat">
+        <div class="label">آخر EMA 21</div>
+        <div class="number" id="ema21">—</div>
+      </div>
+    </div>
+    <div class="stat" style="margin-top:10px">
+      <div class="label">قراءة التقاطع</div>
+      <p id="emaSignal" style="margin-bottom:0">أدخل بيانات الإغلاق لحساب المؤشرات.</p>
+    </div>
+    <p class="muted">الحساب يتم على الأسعار التي تدخلها أنت، وليس على بيانات TradingView تلقائيًا. هذه قراءة تعليمية وليست توصية شراء أو بيع.</p>
+  </div>
 
-<div class="card">
-<h3>تنبيه مهم</h3>
-<p>المخطط ومعلومات السعر يقدمهما TradingView. المحاكي لا يقرأ بيانات المخطط برمجيًا ولا يرسل أوامر إلى MT5 أو Exness.</p>
-<p class="note">لا تدخل كلمات المرور أو بيانات حساب التداول في هذه الصفحة.</p>
-</div>
+  <div class="card">
+    <h2>المحاكي الافتراضي</h2>
+    <p class="muted">الرصيد افتراضي بالدولار. لا تستخدم أموالًا حقيقية هنا.</p>
+    <div class="grid">
+      <div class="stat">
+        <div class="label">الرصيد الابتدائي</div>
+        <div class="number">$10,000.00</div>
+      </div>
+      <div class="stat">
+        <div class="label">الرصيد الحالي</div>
+        <div class="number" id="balance">$10,000.00</div>
+      </div>
+      <div class="stat">
+        <div class="label">الربح/الخسارة المحققة</div>
+        <div class="number" id="realized">$0.00</div>
+      </div>
+      <div class="stat">
+        <div class="label">الربح/الخسارة المفتوحة</div>
+        <div class="number" id="floating">$0.00</div>
+      </div>
+    </div>
+
+    <label for="marketPrice">السعر الحالي الذي أدخلته يدويًا</label>
+    <input id="marketPrice" type="number" min="0.01" step="0.01" placeholder="أدخل السعر الذي تراه في المخطط">
+    <button id="updatePrice" style="width:100%;margin-top:10px">تحديث السعر الافتراضي</button>
+    <p class="muted">انسخ السعر من المخطط وأدخله هنا عند رغبتك بتحديث المحاكاة. لن يتم تحديثه تلقائيًا.</p>
+
+    <label for="volume">حجم الصفقة الافتراضية (أونصة تعليمية)</label>
+    <input id="volume" type="number" min="0.01" max="100" step="0.01" value="0.10">
+
+    <div class="btnrow">
+      <button class="buy" id="openBuy">فتح شراء افتراضي</button>
+      <button class="sell" id="openSell">فتح بيع افتراضي</button>
+    </div>
+    <button class="secondary" id="reset" style="width:100%;margin-top:10px">إعادة ضبط المحاكي</button>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>النوع</th><th>الدخول</th><th>الحجم</th><th>ربح/خسارة</th><th>الإجراء</th></tr></thead>
+        <tbody id="positions">
+          <tr><td colspan="5">لا توجد صفقات افتراضية مفتوحة.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 style="margin-top:22px">سجل الصفقات المغلقة</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>النوع</th><th>الدخول</th><th>الخروج</th><th>النتيجة</th></tr></thead>
+        <tbody id="history">
+          <tr><td colspan="4">لا توجد نتائج بعد.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">الحساب التعليمي يفترض أن كل تغير بمقدار دولار واحد في السعر يساوي دولارًا واحدًا لكل أونصة افتراضية. لا يحاكي فروق الأسعار أو العمولات أو مواصفات عقد وسيطك.</p>
+  </div>
+
+  <div class="card">
+    <h2>حالة المشروع</h2>
+    <div class="stat">
+      <div class="label">نوع الاتصال</div>
+      <div class="number" style="font-size:18px">مخطط خارجي + محاكاة محلية</div>
+      <p>لا يوجد ربط آلي ببيانات الشموع أو حساب تداول. لا تضع كلمات مرور أو مفاتيح حسابك في هذه الصفحة.</p>
+    </div>
+  </div>
 </main>
 
+<footer>GoldBot XAUUSD · محاكي تعليمي مجاني</footer>
+
 <script>
-let timer=null;
-let count=0;
-function startSim(){
-  if(timer)return;
-  document.getElementById("status").textContent="يعمل تجريبيًا";
-  document.getElementById("log").textContent="بدأ المحاكي الافتراضي.";
-  timer=setInterval(()=>{
-    if(Math.random()>0.65){
-      count++;
-      document.getElementById("signals").textContent=count;
-      document.getElementById("log").textContent=
-        "إشارة افتراضية رقم "+count+" — ليست توصية تداول.";
+(function(){
+  "use strict";
+
+  const $ = id => document.getElementById(id);
+  const initialBalance = 10000;
+  let balance = initialBalance;
+  let realized = 0;
+  let positions = [];
+  let history = [];
+  let nextId = 1;
+  let currentPrice = null;
+
+  function money(n){
+    return (n < 0 ? "-$" : "$") + Math.abs(n).toLocaleString("en-US", {
+      minimumFractionDigits:2, maximumFractionDigits:2
+    });
+  }
+
+  function getPrice(){
+    const v = Number($("marketPrice").value);
+    if(!Number.isFinite(v) || v <= 0){
+      alert("أدخل سعرًا صحيحًا أولًا.");
+      return null;
     }
-  },3000);
-}
-function stopSim(){
-  if(timer)clearInterval(timer);
-  timer=null;
-  document.getElementById("status").textContent="متوقف";
-  document.getElementById("log").textContent="تم إيقاف المحاكي.";
-}
+    currentPrice = v;
+    return v;
+  }
+
+  function pnl(pos, price){
+    const direction = pos.type === "شراء" ? 1 : -1;
+    return (price - pos.entry) * pos.volume * direction;
+  }
+
+  function render(){
+    const floating = currentPrice === null ? 0 :
+      positions.reduce((sum,p) => sum + pnl(p,currentPrice),0);
+
+    $("balance").textContent = money(balance);
+    $("realized").textContent = money(realized);
+    $("floating").textContent = money(floating);
+    $("realized").className = "number " + (realized >= 0 ? "green" : "red");
+    $("floating").className = "number " + (floating >= 0 ? "green" : "red");
+
+    const body = $("positions");
+    if(!positions.length){
+      body.innerHTML = '<tr><td colspan="5">لا توجد صفقات افتراضية مفتوحة.</td></tr>';
+    }else{
+      body.innerHTML = positions.map(p => {
+        const result = currentPrice === null ? 0 : pnl(p,currentPrice);
+        return '<tr><td>'+p.type+'</td><td>'+p.entry.toFixed(2)+'</td><td>'+
+          p.volume.toFixed(2)+'</td><td class="'+(result>=0?'green':'red')+'">'+
+          money(result)+'</td><td><button data-close="'+p.id+'" class="secondary">إغلاق</button></td></tr>';
+      }).join("");
+    }
+
+    const hist = $("history");
+    hist.innerHTML = history.length ? history.slice().reverse().map(p =>
+      '<tr><td>'+p.type+'</td><td>'+p.entry.toFixed(2)+'</td><td>'+
+      p.exit.toFixed(2)+'</td><td class="'+(p.result>=0?'green':'red')+'">'+
+      money(p.result)+'</td></tr>'
+    ).join("") : '<tr><td colspan="4">لا توجد نتائج بعد.</td></tr>';
+  }
+
+  $("updatePrice").addEventListener("click", () => {
+    const price = getPrice();
+    if(price !== null) render();
+  });
+
+  function openPosition(type){
+    if(currentPrice === null){
+      alert("أدخل السعر واضغط تحديث السعر أولًا.");
+      return;
+    }
+    const volume = Number($("volume").value);
+    if(!Number.isFinite(volume) || volume <= 0 || volume > 100){
+      alert("أدخل حجمًا افتراضيًا بين 0.01 و100.");
+      return;
+    }
+    positions.push({id:nextId++,type,entry:currentPrice,volume});
+    render();
+  }
+
+  $("openBuy").addEventListener("click", () => openPosition("شراء"));
+  $("openSell").addEventListener("click", () => openPosition("بيع"));
+
+  $("positions").addEventListener("click", e => {
+    const button = e.target.closest("[data-close]");
+    if(!button) return;
+    if(currentPrice === null){
+      alert("أدخل سعر الخروج واضغط تحديث السعر أولًا.");
+      return;
+    }
+    const id = Number(button.dataset.close);
+    const index = positions.findIndex(p => p.id === id);
+    if(index < 0) return;
+    const p = positions[index];
+    const result = pnl(p,currentPrice);
+    realized += result;
+    balance += result;
+    history.push({type:p.type,entry:p.entry,exit:currentPrice,result});
+    positions.splice(index,1);
+    render();
+  });
+
+  $("reset").addEventListener("click", () => {
+    if(!confirm("هل تريد حذف جميع الصفقات الافتراضية وسجل النتائج وإعادة الرصيد؟")) return;
+    balance = initialBalance;
+    realized = 0;
+    positions = [];
+    history = [];
+    nextId = 1;
+    currentPrice = null;
+    $("marketPrice").value = "";
+    render();
+  });
+
+  function calculateEMA(values, period){
+    const alpha = 2 / (period + 1);
+    let ema = values[0];
+    const output = [ema];
+    for(let i=1;i<values.length;i++){
+      ema = values[i] * alpha + ema * (1-alpha);
+      output.push(ema);
+    }
+    return output;
+  }
+
+  $("calcEma").addEventListener("click", () => {
+    const raw = $("closes").value.trim();
+    const signal = $("emaSignal");
+    if(!raw){
+      alert("ألصق أسعار إغلاق الشموع أولًا.");
+      return;
+    }
+    const parts = raw.split(/[\s,;،]+/).filter(Boolean);
+    const values = parts.map(Number);
+    if(values.length < 22 || values.some(v => !Number.isFinite(v) || v <= 0)){
+      alert("أدخل 22 سعر إغلاق صحيحًا على الأقل، مفصولة بفواصل.");
+      return;
+    }
+
+    const fast = calculateEMA(values,9);
+    const slow = calculateEMA(values,21);
+    const last = values.length-1;
+    $("ema9").textContent = fast[last].toFixed(3);
+    $("ema21").textContent = slow[last].toFixed(3);
+
+    const previousDifference = fast[last-1] - slow[last-1];
+    const difference = fast[last] - slow[last];
+
+    if(previousDifference <= 0 && difference > 0){
+      signal.textContent = "تقاطع صاعد في آخر قيمتين مدخلتين (تعليمي).";
+      signal.className = "green";
+    }else if(previousDifference >= 0 && difference < 0){
+      signal.textContent = "تقاطع هابط في آخر قيمتين مدخلتين (تعليمي).";
+      signal.className = "red";
+    }else if(difference > 0){
+      signal.textContent = "EMA 9 أعلى من EMA 21 في آخر قيمة مدخلة؛ لم يُكتشف تقاطع جديد في آخر خطوة.";
+      signal.className = "green";
+    }else if(difference < 0){
+      signal.textContent = "EMA 9 أسفل EMA 21 في آخر قيمة مدخلة؛ لم يُكتشف تقاطع جديد في آخر خطوة.";
+      signal.className = "red";
+    }else{
+      signal.textContent = "المتوسطان متساويان تقريبًا في آخر قيمة.";
+      signal.className = "";
+    }
+  });
+
+  render();
+})();
 </script>
 </body>
 </html>
